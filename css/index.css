@@ -1,0 +1,166 @@
+body{
+    margin:0;
+    color:#494949;
+    font-size: 17px;
+    background-color: #f2f2f2;
+    letter-spacing: 0.7px;
+    line-height: 1.5;
+}
+
+.header{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #fff;
+    color: #494949;
+    height: 80px;
+    position: absolute;
+    border-bottom: 0.5px solid #dbd9d9;
+}
+
+.header #menu-icon{
+    float: left;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 1.5em;
+}
+
+.header #header-text{
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+    margin-top: 25px;
+    margin-right: 30px;
+}
+
+.body{
+    position: absolute;
+    top: 100px;
+    height: 90%;
+    left: 30px;
+    right: 30px;
+}
+
+.main{
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.tab-btn{
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+    cursor:pointer;
+    background-color: #dbd9d9;
+}
+
+/* カレンダー */
+.calender-header{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.calender-header-text{
+    float: left;
+    margin-left: 30px;
+    font-size: 25px;
+}
+
+.calender-header-btn{
+    float: right;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.calender-body{
+    margin: 10px 30px;
+}
+
+.calender-table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+
+.calender-table thead{
+    width: 100%;
+    display:block;
+}
+
+.calender-table .calender-date{
+    border-bottom: solid 2px #c2c2c2;
+    padding: 15px 0 15px 0;
+    color: #807e7e;
+    font-weight: normal;
+}
+
+.calender-table .blank,
+.calender-table .calender-time{
+    width: 70px;
+    border: none;
+    font-size: 0.8em;
+    color: #807e7e;
+    vertical-align: top;
+    text-align: left;
+    table-layout:fixed;
+}
+
+.calender-table .calender-time{
+    padding-right: 4px;
+}
+
+/* 文字隠す */
+.calender-table .blank{
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.calender-table tbody{
+    overflow-y: scroll;
+    display: block;
+    height: 400px;
+}
+
+.calender-table .calender-content,
+.calender-table .calender-date{
+    width: 14%;
+}
+
+.calender-table .calender-content{
+    border-bottom: dotted 0.5px #c2c2c2;
+    border-right: solid 1px #c2c2c2;
+    border-top: none;
+    font-size: 0.7em;
+    text-align: left;
+    vertical-align: top;
+    padding-left: 7px;
+    font-weight: bold;
+}
+.calender-table tbody tr{
+    height: 20px;
+}
+
+.calender-content#red{
+    background-color: #F6D4D8;
+    color: #D04255;
+}
+
+.calender-content#blue{
+    background-color: #C9E8F1;
+    color: #1E98B9;
+}
+
+.calender-content#green{
+    background-color: #C6EDDB;
+    color: #1BA466;
+}
+
+.calender-time-border .calender-content{
+    border-top: solid 0.5px #c2c2c2;
+}
