@@ -11,6 +11,11 @@
     		controller: 'calenderController',
             controllerAs: 'calenderCtrl',
         })
+        .when('/task',{
+    		templateUrl: './views/task.html',
+    		controller: 'taskController',
+            controllerAs: 'taskCtrl',
+        })
     	.otherwise({
     		redirectTo: '/'
     	});

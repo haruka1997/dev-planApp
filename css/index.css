@@ -8,14 +8,8 @@ body{
 }
 
 .header{
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    background-color: #fff;
-    color: #494949;
-    height: 80px;
-    position: absolute;
-    border-bottom: 0.5px solid #dbd9d9;
+    background-color: #009688;
+    color: #fff;
 }
 
 .header #menu-icon{
@@ -36,7 +30,7 @@ body{
 
 .body{
     position: absolute;
-    top: 100px;
+    top: 20px;
     height: 90%;
     left: 30px;
     right: 30px;
@@ -55,112 +49,51 @@ body{
     text-decoration: none;
     cursor:pointer;
     background-color: #dbd9d9;
-}
-
-/* カレンダー */
-.calender-header{
-    position: relative;
-    width: 100%;
-    height: 60px;
-}
-
-.calender-header-text{
-    float: left;
-    margin-left: 30px;
-    font-size: 25px;
-}
-
-.calender-header-btn{
-    float: right;
-    margin-right: 30px;
-    margin-top: 30px;
-}
-
-.calender-body{
-    margin: 10px 30px;
-}
-
-.calender-table{
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
-    table-layout:fixed;
-}
-
-.calender-table thead{
-    width: 100%;
-    display:block;
-}
-
-.calender-table .calender-date{
-    border-bottom: solid 2px #c2c2c2;
-    padding: 5px 0 7px 0;
-    color: #807e7e;
+    color:#494949;
     font-weight: normal;
 }
 
-.calender-table .blank,
-.calender-table .calender-time{
-    width: 70px;
-    border: none;
-    font-size: 0.8em;
-    color: #807e7e;
-    vertical-align: top;
-    text-align: left;
-    table-layout:fixed;
+.tab-btn:hover{
+    color: #494949;
 }
 
-.calender-table .calender-time{
-    padding-right: 4px;
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active::after {
+    background: #00796B;
 }
 
-/* 文字隠す */
-.calender-table .blank{
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+.mdl-tabs__tab .mdl-tabs__ripple-container .mdl-ripple{
+    background-color: #00796B;
 }
 
-.calender-table tbody{
-    overflow-y: scroll;
-    display: block;
-    height: 400px;
+.body-tab{
+    -webkit-justify-content: left;
 }
 
-.calender-table .calender-content,
-.calender-table .calender-date{
-    width: 14%;
+.side-tab a{
+    font-size: 1em;
+    width: 30%;
 }
 
-.calender-table .calender-content{
-    border-bottom: dotted 0.5px #c2c2c2;
-    border-right: solid 1px #c2c2c2;
-    border-top: none;
-    font-size: 0.7em;
-    text-align: left;
-    vertical-align: top;
-    padding-left: 7px;
-    font-weight: bold;
-}
-.calender-table tbody tr{
-    height: 20px;
+.plan-form{
+    padding: 10px;
 }
 
-.calender-content#red{
-    background-color: #F6D4D8;
-    color: #D04255;
+.plan-form .form-text{
+    font-size: 14px;
 }
 
-.calender-content#blue{
-    background-color: #C9E8F1;
-    color: #1E98B9;
+.mdl-layout__drawer{
+    width: 300px;
+    transform: translateX(-300px);
 }
 
-.calender-content#green{
-    background-color: #C6EDDB;
-    color: #1BA466;
+.form-tag p{
+    float:left;
+    margin: 10px;
+    cursor: pointer;
 }
 
-.calender-time-border .calender-content{
-    border-top: solid 0.5px #c2c2c2;
+.mdl-button--accent.mdl-button--accent.mdl-button--raised{
+    background-color: #009688;
+    margin-top: 30px;
 }
