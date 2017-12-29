@@ -1,18 +1,21 @@
 <!doctype html>
-<html>
+<html ng-app="planApp">
 <head>
 	<meta charset="utf-8"/>
 	<title>planApp</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-    <link rel="stylesheet" href="./../css/index.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/route.js"></script>
+    <script src="./scripts/controller/index.js"></script>
+    <script src="./scripts/controller/calender.js"></script>
 </head>
 
-<body>
+<body ng-controller="indexController as indexCtrl">
     <header class="header">
         <div id="menu-icon">
             <i class="fas fa-bars"></i>
@@ -27,10 +30,16 @@
         <div class="tabMenu">
             <a class="tab-btn" style="background-color:#fff;"> calender</a>
             <a class="tab-btn"> task</a>
-            <a class="tab-btn"> plan</a>
         </div>
         <div class="main">
+             <!--カレンダー-->
             <div class="calender">
+                <div ng-view></div>
+            </div>
+            <div class="task" ng-if=false>
+                <div ng-view></div>
+            </div>
+            <!-- <div class="calender">
                 <div class="calender-header">
                     <div class="calender-header-text">
                         <p>2017年12月</p>
@@ -252,10 +261,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="task">
-
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
