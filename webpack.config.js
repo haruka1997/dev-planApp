@@ -3,7 +3,8 @@ const webpack = require('webpack');
 module.exports = {
   // エントリーポイントの設定
   entry: {
-  'dist/index': './scripts/controller/index.js'
+  'dist/index': './scripts/controller/index.js',
+  'dist/calender': './scripts/controller/calender.js'
 　},
 
   // 出力の設定

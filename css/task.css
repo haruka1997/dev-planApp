@@ -9,6 +9,7 @@
 
 .task-table thead th{
     text-align: center;
+    font-size: 13px;
 }
 .task-table thead th,
 .task-table tbody td{
@@ -20,4 +21,8 @@
     width: 20px;
     margin-left: 3px;
     margin-top: 10px;
+}
+
+.task-checkbox{
+    background-color: #009688;
 }

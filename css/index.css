@@ -87,7 +87,11 @@ body{
     transform: translateX(-300px);
 }
 
-.form-tag p{
+#form-tag{
+    height: 60px;
+}
+
+#form-tag p{
     float:left;
     margin: 10px;
     cursor: pointer;
@@ -95,5 +99,27 @@ body{
 
 .mdl-button--accent.mdl-button--accent.mdl-button--raised{
     background-color: #009688;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    margin: auto;
+}
+
+#form-time{
+    height: 50px;
+}
+
+#form-time #time{
+    width: 50%;
+    float:left;
+}
+
+.tag#red::before{
+    background-color: #D32F2F
+}
+
+.tag#blue::before{
+    background-color: #0288D1;
+}
+
+.tag#green::before{
+    background-color: #388E3C;
 }

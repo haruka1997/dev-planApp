@@ -16,6 +16,7 @@
 
     <link href="./lib/propellerkit/dist/css/propeller.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/calender.css">
     <link rel="stylesheet" href="./css/task.css">
@@ -23,7 +24,8 @@
     <script src="./scripts/app.js"></script>
     <script src="./scripts/route.js"></script>
     <script src="./dist/index-bundle.js"></script>
-    <script src="./scripts/controller/calender.js"></script>
+    <script src="./dist/calender-bundle.js"></script>
+    <!-- <script src="./scripts/controller/calender.js"></script> -->
     <script src="./scripts/controller/task.js"></script>
 </head>
 
@@ -59,51 +61,89 @@
                                 <label for="regular1" class="control-label">
                                     予定
                                 </label>
-                                <input type="text" id="regular1" class="form-control form-text">
+                                <input type="text" id="regular1" class="form-control form-text" ng-model="indexCtrl.value.createPlan.name">
                             </div>
                             <div class="form-group pmd-textfield">
                                 <label for="regular1" class="control-label">
                                     日付
                                 </label>
-                                <input type="date" id="regular1" class="form-control form-text">
+                                <input type="date" id="regular1" class="form-control form-text" ng-model="indexCtrl.value.createPlan.date">
                             </div>
-                            <div class="form-group pmd-textfield">
-                                <label for="regular1" class="control-label">
-                                    開始時刻
-                                </label>
-                                <input type="time" id="regular1" class="form-control form-text">
+                            <div class="form-group pmd-textfield" id="form-time"> 
+                                <div id="time">
+                                    <label for="regular1" class="control-label">
+                                        開始時刻
+                                    </label>
+                                    <input type="time" id="regular1" class="form-control form-text" ng-model="indexCtrl.value.createPlan.startTime">
+                                </div>
+                                <div id="time">
+                                    <label for="regular1" class="control-label">
+                                        終了時刻
+                                    </label>
+                                    <input type="time" id="regular1" class="form-control form-text" ng-model="indexCtrl.value.createPlan.finishTime">
+                                </div>
                             </div>
-                            <div class="form-group pmd-textfield">
-                                <label for="regular1" class="control-label">
-                                    終了時刻
-                                </label>
-                                <input type="time" id="regular1" class="form-control form-text">
-                            </div>
-                            <div class="form-group pmd-textfield">
+                            <div class="form-group pmd-textfield" id="form-tag">
                                 <label for="regular1" class="control-label">
                                     タグ
                                 </label>
-                                <div class="form-tag">
-                                    <p class="tag" id="red"style="background: #EF5350;"></p>
-                                    <p class="tag" id="blue"style="background: #29B6F6;"></p>
-                                    <p class="tag" id="green"style="background: #66BB6A;"></p>
+                                <div>
+                                    <p class="tag" id="red" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][0]" ng-click="indexCtrl.value.selectTag=1;"></p>
+                                    <p class="tag" id="blue" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][1]" ng-click="indexCtrl.value.selectTag=2;"></p>
+                                    <p class="tag" id="green" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][2]" ng-click="indexCtrl.value.selectTag=3;"></p>
                                 </div>
                             </div>
-                            <button class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                追加
-                            </button>
+                            <div class="form-group pmd-textfield">
+                                <label class="control-label">メモ</label>
+                                <textarea class="form-control form-text" ng-model="indexCtrl.value.createPlan.memo"></textarea>
+                            </div>
                         </div>
+                        <button class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="indexCtrl.method.clickAddBtn();">
+                            追加
+                        </button>
                     </nav>
                 </div>
 
                 <!-- タスクフォーム -->
                 <div class="mdl-tabs__panel is-active" id="add-task" ng-if="!indexCtrl.value.flag.isCalenderMenu">
-                    <span class="mdl-layout-title">task</span>
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" hrsef="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
+                        <div class="plan-form">
+                            <div class="form-group pmd-textfield">
+                                <label for="regular1" class="control-label">
+                                    タスク名
+                                </label>
+                                <input type="text" id="regular1" class="form-control form-text">
+                            </div>
+                            <div class="form-group pmd-textfield">
+                                <label for="regular1" class="control-label">
+                                    締切日
+                                </label>
+                                <input type="date" id="regular1" class="form-control form-text">
+                            </div>
+                            <div class="form-group pmd-textfield">
+                                <label for="regular1" class="control-label">
+                                    予想時間
+                                </label>
+                                <input type="time" id="regular1" class="form-control form-text">
+                            </div>
+                            <div class="form-group pmd-textfield" id="form-tag">
+                                <label for="regular1" class="control-label">
+                                    タグ
+                                </label>
+                                <div>
+                                    <p class="tag" id="red" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][0]" ng-click="indexCtrl.value.selectTag=1;"></p>
+                                    <p class="tag" id="blue" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][1]" ng-click="indexCtrl.value.selectTag=2;"></p>
+                                    <p class="tag" id="green" ng-style="indexCtrl.value.style.tag[indexCtrl.value.selectTag][2]" ng-click="indexCtrl.value.selectTag=3;"></p>
+                                </div>
+                            </div>
+                            <div class="form-group pmd-textfield">
+                                <label class="control-label">メモ</label>
+                                <textarea class="form-control form-text"></textarea>
+                            </div>
+                        </div>
+                        <button style="margin:auto;"class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            追加
+                        </button>
                     </nav>
                 </div>
             </div>
@@ -117,13 +157,13 @@
                         <!-- タブ -->
                         <div class="mdl-tabs__tab-bar body-tab">
                             <a href="#starks-panel" class="mdl-tabs__tab is-active" ng-click="indexCtrl.method.clickTabBtn('calender');">
-                                <i class="far fa-calendar-alt"></i>  calender
+                                <i class="far fa-calendar-alt"></i>  calendar
                             </a>
                             <a href="#lannisters-panel" class="mdl-tabs__tab body-tab" ng-click="indexCtrl.method.clickTabBtn('task');">
                                 <i class="fas fa-tasks"></i>  task
                             </a>
                         </div>
-                        
+
                         <!-- カレンダー -->
                         <div class="mdl-tabs__panel is-active" id="starks-panel" ng-if="indexCtrl.value.flag.isCalenderTab">
                             <div ng-view></div>
