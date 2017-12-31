@@ -107,8 +107,13 @@ body{
     height: 50px;
 }
 
+#form-time #date{
+    width: 60%;
+    float:left;
+}
+
 #form-time #time{
-    width: 50%;
+    width: 40%;
     float:left;
 }
 

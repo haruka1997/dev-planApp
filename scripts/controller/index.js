@@ -1,3 +1,5 @@
+import { calenderTemplate } from "./calenderTemplate";
+
 (function() {
     'use strict';
 
@@ -5,8 +7,8 @@
         .module('planApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$scope'];
-    function indexController($scope) {
+    indexController.$inject = ['$scope', '$location'];
+    function indexController($scope, $location) {
         $scope.indexCtrl = this;
 
         $scope.indexCtrl.value = {
@@ -15,18 +17,23 @@
                 isCalenderMenu: true,
             },
             style: {
-                tag: {}
+                tag: {},
+                allDay: true
             },
             selectTag: 0,
-            createPlan: {}
+            createPlan: {},
+            template: ""
         };
 
         $scope.indexCtrl.method = {
             clickTabBtn: clickTabBtn,
-            clickAddBtn: clickAddBtn
+            clickAddBtn: clickAddBtn,
+            changeAllday:changeAllday
         };
 
         const jquery = require("./../../node_modules/jquery/dist/jquery.min.js");
+
+        $scope.indexCtrl.value.template = require('./calenderTemplate');
 
         init();
 
@@ -41,29 +48,6 @@
                 [{backgroundColor: '#FFEBEE'}, {backgroundColor: '#E1F5FE'}, {backgroundColor: '#66BB6A'}]  //green
             ];
 
-            //カレンダー作成
-            var template = "";
-            for(var i=0; i<25; i++){
-                if(i < 10){
-                    template += "<tr class='calender-time-border'><td class='calender-time'>0" + i + ":00</td>";
-                }else{
-                    template += "<tr class='calender-time-border'><td class='calender-time'>" + i + ":00</td>";
-                }
-                for(var j=0; j<6; j++){
-                    template += "<td class='calender-content'></td>";
-                }
-                template += "<td class='calender-content' style='border-right: none;'></td></tr>";
-
-                for(var y=0; y<3; y++){
-                    template += "<tr><td class='calender-time'></td>";
-                    for(var z=0; z<6; z++){
-                        template += "<td class='calender-content'></td>";
-                    }
-                    template += "<td class='calender-content' style='border-right: none;'></td></tr>";
-                }
-            }
-            jquery('.calender-table tbody > tr:last').after(template);
-
         }
 
         /**
@@ -71,14 +55,14 @@
          * @param {*} btn 
          */
         function clickTabBtn(btn){
+            console.log(btn)
             if(btn == 'calender'){
                 $scope.indexCtrl.value.flag.isCalenderTab = true;
-                window.location.href = './#!/';
+                $location.path('/');
             }else{
                 $scope.indexCtrl.value.flag.isCalenderTab = false;
-                window.location.href = './#!/task';
+                $location.path('/task');
             }
-            init();
         }
 
         /**
@@ -95,7 +79,7 @@
             var rowspan = '';
 
             //どの行に予定を追加するか調整
-            var nthDay = $scope.indexCtrl.value.createPlan.date.getDay();
+            var nthDay = $scope.indexCtrl.value.createPlan.startDate.getDay();
             if(nthDay == 0){ //日曜日
                 tdNthChild = 'nth-child(' + 8 + ')';
             }else{          //その他
@@ -141,8 +125,17 @@
             jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild).attr('rowspan', rowspan);
             //trの削除
             for(var j=0; j<deletetrNthChild.length; j++){
-                jquery('.calender-table tbody tr:' + deletetrNthChild[j] + ' td:nth-child(2)').remove();
+                jquery('.calender-table tbody:' + deletetrNthChild[j] + ' td:nth-child(2)').remove();
             }
+
+            //カレンダーテンプレートの更新
+            var template = "";
+            template = jquery('.calender-table tbody').html();
+            $scope.indexCtrl.value.template = '<tbody>' + template + '</tbody>';
+        }
+
+        function changeAllday(value){
+            console.log(value)
         }
 
     }
