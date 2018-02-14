@@ -10,7 +10,14 @@
         var calenderCtrl = this;
 
         calenderCtrl.value = {
-            template: ""
+            template: "",
+            today: {
+                year: "",
+                month: "",
+                weekday: "",
+                date: ""
+            },
+            startDate: ""
         }
 
         const jquery = require("./../../node_modules/jquery/dist/jquery.min.js");
@@ -20,6 +27,17 @@
         function init(){
             // jquery('.calender-table tbody > tr:last').after($scope.indexCtrl.value.template);
             jquery('.calender-table > thead:last').after($scope.indexCtrl.value.template);
+            
+            //カレンダーの日付設定
+            var today = new Date();
+            calenderCtrl.value.today.year = today.getFullYear();
+            calenderCtrl.value.today.month = today.getMonth()+1;
+            calenderCtrl.value.today.weekday = today.getDay();
+            calenderCtrl.value.today.date = today.getDate();
+
+            var weekdayOffset = [6, 0, 1, 2, 3, 4, 5]
+
+            calenderCtrl.value.startDate = calenderCtrl.value.today.date - weekdayOffset[calenderCtrl.value.today.weekday];
             //カレンダー作成
             // var template = "";
             // for(var i=0; i<25; i++){

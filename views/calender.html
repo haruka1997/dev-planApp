@@ -1,7 +1,7 @@
 <div class="calender">
         <div class="calender-header">
             <div class="calender-header-text">
-                <p>2017年12月</p>
+                <p>{{calenderCtrl.value.today.year}}年{{calenderCtrl.value.today.month}}月</p>
             </div>
             <div class="calender-header-btn">
                 <div class="pmd-card-body switch-btn">
@@ -22,13 +22,13 @@
                 <thead>
                     <tr>
                         <th class="blank">00:00</th>
-                        <th class="calender-date">25日(月)</th>
-                        <th class="calender-date">26日(火)</th>
-                        <th class="calender-date">27日(水)</th>
-                        <th class="calender-date">28日(木)</th>
-                        <th class="calender-date">29日(金)</th>
-                        <th class="calender-date">30日(土)</th>
-                        <th class="calender-date" style="border-right: none;">31日(日)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate}}日(月)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate + 1}}日(火)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate + 2}}日(水)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate + 3}}日(木)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate + 4}}日(金)</th>
+                        <th class="calender-date">{{calenderCtrl.value.startDate + 5}}日(土)</th>
+                        <th class="calender-date" style="border-right: none;">{{calenderCtrl.value.startDate + 6}}日(日)</th>
                     </tr>
                 </thead>
             </table>
