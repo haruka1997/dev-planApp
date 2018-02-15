@@ -7,14 +7,15 @@ import { calenderTemplate } from "./calenderTemplate";
         .module('planApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$scope', '$location'];
-    function indexController($scope, $location) {
+    indexController.$inject = ['$scope', '$location','$compile'];
+    function indexController($scope, $location, $compile) {
         $scope.indexCtrl = this;
 
         $scope.indexCtrl.value = {
             flag: {
                 isCalenderTab: true,
                 isCalenderMenu: true,
+                isDetailPlan: false //予定を編集中かどうか
             },
             style: {
                 tag: {},
@@ -22,13 +23,16 @@ import { calenderTemplate } from "./calenderTemplate";
             },
             selectTag: 0,
             createPlan: {},
+            detailPlan: {},
             template: ""
         };
 
         $scope.indexCtrl.method = {
             clickTabBtn: clickTabBtn,
             clickAddBtn: clickAddBtn,
-            changeAllday:changeAllday
+            clickPlan: clickPlan,
+            clickDetailPlan:clickDetailPlan,
+            clickDeletePlan: clickDeletePlan
         };
 
         const jquery = require("./../../node_modules/jquery/dist/jquery.min.js");
@@ -47,7 +51,6 @@ import { calenderTemplate } from "./calenderTemplate";
                 [{backgroundColor: '#FFEBEE'}, {backgroundColor: '#29B6F6'}, {backgroundColor: '#E8F5E9'}], //blue
                 [{backgroundColor: '#FFEBEE'}, {backgroundColor: '#E1F5FE'}, {backgroundColor: '#66BB6A'}]  //green
             ];
-
         }
 
         /**
@@ -55,7 +58,6 @@ import { calenderTemplate } from "./calenderTemplate";
          * @param {*} btn 
          */
         function clickTabBtn(btn){
-            console.log(btn)
             if(btn == 'calender'){
                 $scope.indexCtrl.value.flag.isCalenderTab = true;
                 $location.path('/');
@@ -109,7 +111,6 @@ import { calenderTemplate } from "./calenderTemplate";
             for(var i=1; i<rowspan-1; i++){ //rowspanした分だけ
                 deletetrNthChild.push('nth-child(' + Number(nthHour+i) + ')'); //削除する行の情報を配列に格納
             }
-            console.log(deletetrNthChild)
 
             /**
              * 時間の表示形式の設定(10以下は0埋め処理)
@@ -139,6 +140,8 @@ import { calenderTemplate } from "./calenderTemplate";
             //予定を追加する対象行列に時間と予定名を追加
             jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild).html(startHour + ":" + startMinute + ' ' +$scope.indexCtrl.value.createPlan.name);
             jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild).attr('id', id); //idを付与(タグごとに色分けするため)
+            jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild).attr('ng-click', 'indexCtrl.method.clickPlan()'); //クリックイベントを付与
+            $compile(jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild))($scope); //クリックイベントが作動するようにコンパイル
             jquery('.calender-table tbody tr:' + trNthChild + ' td:' + tdNthChild).attr('rowspan', rowspan);  //rowspanの設定
 
             /**
@@ -156,7 +159,32 @@ import { calenderTemplate } from "./calenderTemplate";
             $scope.indexCtrl.value.template = '<tbody>' + template + '</tbody>'; //カレンダーテンプレートの更新
         }
 
-        function changeAllday(value){
+        /** 
+         * カレンダー内にある予定をクリックした時のイベント
+         * 詳細モーダル上に予定名、開始日・時刻、終了日・時刻、タグ、メモを表示
+         */
+        function clickPlan(){
+            $scope.indexCtrl.value.flag.isDetailPlan = true; //予定を詳細表示中にする
+
+            //横タブメニューの表示
+            jquery('.mdl-layout__drawer').addClass('is-visible');
+            jquery('.mdl-layout__obfuscator').addClass('is-visible'); 
+
+            //クリックした予定の情報を表示
+        }
+
+        /** 
+         * 予定の編集を選択した時の処理メソッド
+         */
+        function clickDetailPlan(){
+           
+        }
+        
+        /**
+         * 予定の削除を選択した時の処理メソッド
+         */
+        function clickDeletePlan(){
+
         }
 
     }

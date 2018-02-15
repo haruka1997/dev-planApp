@@ -128,3 +128,8 @@ body{
 .tag#green::before{
     background-color: #388E3C;
 }
+
+.mdl-layout__header,
+.mdl-layout__content{
+    z-index: initial;
+}

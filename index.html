@@ -128,9 +128,8 @@
                                 <textarea class="form-control form-text" ng-model="indexCtrl.value.createPlan.memo"></textarea>
                             </div>
                         </div>
-                        <button class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="indexCtrl.method.clickAddBtn();">
-                            追加
-                        </button>
+                        <button class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="indexCtrl.method.clickAddBtn();" ng-if="!indexCtrl.value.flag.isDetailPlan">追加</button>
+                        <button class="tab-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="indexCtrl.method.clickAddBtn();" ng-if="indexCtrl.value.flag.isDetailPlan">編集</button>
                     </nav>
                 </div>
 
