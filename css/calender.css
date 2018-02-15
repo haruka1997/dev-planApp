@@ -121,18 +121,21 @@
     background-color: #FFEBEE;
     color: #D32F2F;
     border-left: solid 3px #D32F2F;
+    cursor: pointer;
 }
 
 .calender-content#blue{
     background-color: #E1F5FE;
     color: #0288D1;
     border-left: solid 3px #0288D1;
+    cursor: pointer;
 }
 
 .calender-content#green{
     background-color: #E8F5E9;
     color: #388E3C;
     border-left: solid 3px #388E3C;
+    cursor: pointer;
 }
 
 .calender-time-border .calender-content{
