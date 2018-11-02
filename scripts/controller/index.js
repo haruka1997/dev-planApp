@@ -93,7 +93,7 @@ import { calenderTemplate } from "./calenderTemplate";
             /**
              * どの行に予定を追加するか調整 
              */
-            var nthHour = startHour * 4 + 2; //例：0時 => 2行目
+            var nthHour = (startHour-7) * 4 + 1; //例：7時 => 1行目
             nthHour += startMinute / 15; //例：30分 => +2行目
             trNthChild = 'nth-child(' + nthHour + ')'; //例：0時30分 => 4行目 から予定を追加する
 
@@ -108,9 +108,10 @@ import { calenderTemplate } from "./calenderTemplate";
              * 削除する行の設定(結合した分だけ行を削除する)
              */
             var deletetrNthChild = []; //削除する行の配列
-            for(var i=1; i<rowspan-1; i++){ //rowspanした分だけ
+            for(var i=1; i<rowspan; i++){ //rowspanした分だけ
                 deletetrNthChild.push('nth-child(' + Number(nthHour+i) + ')'); //削除する行の情報を配列に格納
             }
+            console.log(deletetrNthChild)
 
             /**
              * 時間の表示形式の設定(10以下は0埋め処理)
